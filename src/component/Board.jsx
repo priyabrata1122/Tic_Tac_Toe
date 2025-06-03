@@ -13,6 +13,10 @@ function Board(){
         setXturn(!isXturn);
     }
 
+    const handleReset=()=>{
+        setState(Array(9).fill(null));
+    }
+
     const checkWinner=()=>{
         const logic=[
             [0,1,2],
@@ -53,7 +57,22 @@ function Board(){
                         // top:"10rem"
                     }}
                 >Tic Tac Toe</h1>
-                {isWinner? <Winner title={isWinner}/> : <>
+                {isWinner? <>
+                    <Winner title={isWinner}/> 
+                    <button 
+                        style={{
+                            position:"relative",
+                            top:"10rem",
+                            left:"17.5rem",
+                            border:"none",
+                            height:"2.5rem",
+                            width:"5.5rem",
+                            fontSize:"1.3rem",
+                            borderRadius:"7px"
+                        }}
+                        onClick={handleReset}>Reset</button>
+                    
+                    </> : <>
                     <div className="board-row">
                         <Square onclick={()=>handleClick(0)} value={state[0]}/>
                         <Square onclick={()=>handleClick(1)} value={state[1]}/>
